@@ -59,14 +59,12 @@ header {
 }
 
 .logo img {
-    height: 160px;              /* Mantém o tamanho grande que sua professora pediu */
+    height: 160px;              
     width: auto;
     object-fit: contain;
     display: block;
-    margin-left: -15px;         /* Remove o excesso invisível do lado esquerdo */
-    
-    /* ADICIONE ESTA LINHA PARA CENTRALIZAR VERTICALMENTE: */
-    margin-top: 20px;           /* Empurra a logo um pouco para baixo. Ajuste esse valor se precisar de mais ou menos */
+    margin-left: -15px;         
+    margin-top: 20px;         
 }
 
 nav ul {
