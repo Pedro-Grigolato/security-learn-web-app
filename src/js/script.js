@@ -182,3 +182,41 @@ function reiniciarQuiz() {
     score = 0;
     carregarQuiz();
 }
+
+// 5. Menu de navegação mobile
+const menuToggle = document.querySelector('.menu-toggle');
+const menuPrincipal = document.getElementById('menu-principal');
+
+if (menuToggle && menuPrincipal) {
+    const fecharMenu = () => {
+        menuToggle.classList.remove('ativo');
+        menuPrincipal.classList.remove('ativo');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Abrir menu');
+    };
+
+    menuToggle.addEventListener('click', () => {
+        const aberto = menuToggle.getAttribute('aria-expanded') === 'true';
+
+        menuToggle.classList.toggle('ativo', !aberto);
+        menuPrincipal.classList.toggle('ativo', !aberto);
+        menuToggle.setAttribute('aria-expanded', String(!aberto));
+        menuToggle.setAttribute('aria-label', aberto ? 'Abrir menu' : 'Fechar menu');
+    });
+
+    menuPrincipal.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', fecharMenu);
+    });
+
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') {
+            fecharMenu();
+            menuToggle.focus();
+        }
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 600) fecharMenu();
+    });
+}
+
